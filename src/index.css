@@ -1,0 +1,398 @@
+:root {
+  color-scheme: dark;
+  --bg-soft: #f4f7f9;
+  --surface: #ffffff;
+  --surface-strong: #eef3f6;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --brand-green: #14532d;
+  --brand-light: #dcfce7;
+  --accent: #16a34a;
+  --accent-hover: #15803d;
+  --accent-ring: rgba(22, 163, 74, 0.35);
+  --radius: 0.875rem;
+  --radius-sm: 0.625rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-soft);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
+}
+
+/* ─── Tipografía refinada ─── */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.page-header-title {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-dark);
+}
+
+.tracking-wide {
+  letter-spacing: 0.08em;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Botones ─── */
+.btn-brand {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-brand:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: white;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-brand:active {
+  transform: translateY(0);
+}
+
+.btn-brand:disabled {
+  opacity: 0.55;
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-dark);
+}
+
+/* ─── Formularios ─── */
+.form-control,
+.form-select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem var(--accent-ring);
+}
+
+.input-group-text {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+/* ─── Tarjetas ─── */
+.card-soft {
+  background: var(--surface);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-soft:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+/* Desactivar hover transform en móviles */
+@media (hover: none) {
+  .card-soft:hover {
+    transform: none;
+  }
+}
+
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ─── Layout shell ─── */
+.app-shell {
+  min-height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+/* ─── Videos ─── */
+.video-box {
+  aspect-ratio: 16 / 9;
+  max-height: 360px;
+  width: 100%;
+  background: #0b0f0d;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-box .live-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+}
+
+.live-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: livePulse 2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  50% { opacity: 0.65; box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+}
+
+/* ─── Tablas ─── */
+.table-card {
+  min-height: 320px;
+}
+
+.table-hover tbody tr {
+  transition: background 0.18s ease;
+}
+
+.table-hover tbody tr:hover {
+  background: rgba(22, 163, 74, 0.04) !important;
+}
+
+.list-item {
+  transition: background 0.18s ease;
+  border-radius: 0.5rem;
+}
+
+.list-item:hover {
+  background: rgba(22, 163, 74, 0.06);
+  cursor: pointer;
+}
+
+/* ─── Modales ─── */
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(3px);
+  z-index: 1050;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-custom {
+  max-width: 540px;
+  margin: 2.5rem auto;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Animaciones ─── */
+.animate-in {
+  animation: fadeInUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Badges ─── */
+.status-pill {
+  font-size: 0.78rem;
+  letter-spacing: 0.025em;
+  padding: 0.45em 0.8em;
+  border-radius: 999px;
+}
+
+/* ─── Navbar ─── */
+.navbar-tenax {
+  background: linear-gradient(90deg, var(--brand-green) 0%, #166534 60%, #15803d 100%);
+  box-shadow: 0 2px 12px rgba(20, 83, 45, 0.3);
+}
+
+.navbar-tenax .navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.navbar-tenax .nav-link {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-tenax .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-tenax .nav-link.active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Drop zones ─── */
+.drop-zone {
+  border: 2px dashed rgba(15, 23, 42, 0.12);
+  border-radius: var(--radius);
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.drop-zone:hover {
+  border-color: var(--accent);
+  background: var(--brand-light);
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.08);
+}
+
+.drop-zone.drag-over {
+  border-color: var(--accent);
+  background: var(--brand-light);
+  box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.12);
+  transform: scale(1.01);
+}
+
+/* ─── Preview ─── */
+.preview-img {
+  max-height: 220px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: calc(var(--radius) - 4px);
+  background: #0b0f0d;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.18);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.32);
+}
+
+/* ─── Skeleton ─── */
+.skeleton {
+  background: linear-gradient(90deg, #eef3f6 25%, #e2e8f0 50%, #eef3f6 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.4s infinite ease-in-out;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Footer ─── */
+.footer-tenax {
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  margin-top: auto;
+}
+
+/* ─── Transición de página ─── */
+.page-transition {
+  animation: fadeInUp 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 991px) {
+  .video-box,
+  .table-card {
+    min-height: 280px;
+  }
+
+  .kpi-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+@media (max-width: 575px) {
+  .page-header-title {
+    font-size: 1.75rem;
+  }
+
+  .app-shell {
+    padding-top: 0.5rem;
+  }
+}
